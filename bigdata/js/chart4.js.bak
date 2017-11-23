@@ -1,0 +1,33 @@
+$(function() {
+
+var last = 0;
+
+charts.updateChart4 = function() {
+    return $.post(charts.api + '/active/findNewUserCount', function (data) {
+        var num = data.data;
+        var m = 500;
+        var m2 = 5000;
+        var m3 = 100000;
+        var p = num * 100 / m;
+        if (num <= m) {
+            p = 100 - num * 100 / (m * 2);
+        } else if (num <= 10000) {
+            p = 100 - (50 + 0.25 * ((num - m) * 100 / (m2 - m)));
+        } else {
+            p = 100 - (75 + 0.25 * ((num - m2) * 100 / (m3 - m2)));
+        }
+        $('#nc .progress-vertial .vertial-bar').css('height', p + '%');
+        $('#nc .mark .middle').text(m);
+        $('#nc .tip').css('top', p + '%');
+        $('#nc .tip').countTo({
+            from: last,
+            to: num,
+            speed: 800,
+            refreshInterval: 50
+        });
+        last = num;
+    });
+};
+
+
+});

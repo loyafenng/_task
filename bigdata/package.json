@@ -1,0 +1,14 @@
+{
+  "name": "bigdata",
+  "version": "1.0.0",
+  "description": "big data monitoring system of exue",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "qq",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.4"
+  }
+}

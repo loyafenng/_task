@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>e学云平台监控系统</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/echarts.js"></script>
+    <!-- <script src="js/lib/echarts-gl.min.js"></script> -->
+    <script src="js/lib/jquery.countto.js"></script>
+    <script src="js/chart1.js?v=1.0.0"></script>
+    <script src="js/chart2.js?v=1.0.0"></script>
+    <script src="js/chart3.js?v=1.0.0"></script>
+    <script src="js/chart4.js?v=1.0.0"></script>
+    <script src="js/chart5.js?v=1.0.0"></script>
+    <script src="js/index.js?v=1.0.0"></script>
+    <script src="js/resize.js?v=1.0.2"></script>
+</head>
+
+<body>
+    <div id="container">
+        <div class="bd-title">e学云平台监控系统</div>
+        <div class="bd-charts">
+            <div id="c1" class="bd-chart bd-chart2 chart-distribution bd-chart-img ">
+                <div class="chart-title">今日用户活跃量</div>
+                <div class="chart-body">
+                    <div class="chart-num">0</div>
+                    <span>
+                        <i class="icon icon-dialog"></i>
+                        <span class="chart-num-percent"></span>
+                    </span>
+                    <div class="increase-percent"></div>
+                </div>
+            </div>
+            <div id="c2" class="bd-chart bd-chart2 chart-distribution bd-chart-img">
+                <div class="chart-title">终端设备量</div>
+                <div class="chart-body-group">
+                    <div class="chart-body">
+                        <span class="chart-body-title">考勤机</span>
+                        <div class="chart-num">0</div>
+                        <div class="increase-percent"></div>
+                    </div>
+                    <div class="chart-body">
+                        <span class="chart-body-title">考勤卡</span>
+                        <div class="chart-num">0</div>
+                        <div class="increase-percent"></div>
+                    </div>
+                    <div class="chart-body">
+                        <span class="chart-body-title">摄像头</span>
+                        <div class="chart-num">0</div>
+                        <div class="increase-percent"></div>
+                    </div>
+                    <div class="chart-body">
+                        <span class="chart-body-title">开通量</span>
+                        <div class="chart-num">0</div>
+                        <div class="increase-percent"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="c3" class="bd-chart bd-chart2 chart-distribution bd-chart-img">
+                <div class="chart-title">总注册量</div>
+                <div class="chart-body">
+                    <div class="chart-num">0</div>
+                    <span>
+                        <i class="icon icon-dialog"></i>
+                        <span class="chart-num-percent">0%</span>
+                    </span>
+                    <div class="increase-percent"></div>
+                </div>
+            </div>
+            <div id="c4" class="bd-chart bd-chart2 chart-distribution bd-chart-img">
+                <div class="chart-title">总学校量</div>
+                <div class="chart-body">
+                    <div class="chart-num">0</div>
+                    <div class="increase-percent"></div>
+                </div>
+            </div>
+            <div id="c5" class="bd-chart bd-chart2 chart-distribution bd-chart-img">
+                <div class="chart-title">交易用户量</div>
+                <div class="chart-body">
+                    <div class="chart-num">0</div>
+                    <span>
+                        <i class="icon icon-dialog"></i>
+                        <span class="chart-num-percent"></span>
+                    </span>
+                    <div class="increase-percent"></div>
+                </div>
+            </div>
+
+            <!-- <div id="c6" class="bd-chart bd-chart2 chart-distribution bd-chart-img">
+                <div class="chart-body">
+                    <span class="chart-body-title">摄像头</span>
+                    <div class="chart-num">0</div>
+                    <div class="increase-percent"></div>
+                </div>
+            </div> -->
+            <div id="c8" class="bd-chart bd-chart2 chart-distribution bd-chart-img">
+                <div class="chart-title">总导入量</div>
+                <div class="chart-body">
+                    <div class="chart-num">0</div>
+                    <div class="increase-percent"></div>
+                </div>
+            </div>
+
+            <div id="c7" class="bd-chart bd-chart2 chart-distribution bd-chart-img">
+                <div class="chart-title">机构开通量</div>
+                <div class="chart-body">
+                    <div class="chart-num">0</div>
+                    <div class="increase-percent"></div>
+                </div>
+            </div>
+
+            <div class="bd-chart chart-map">
+                <div class="chart-title hidden">
+                    <ul class="legend">
+                        <li><i class="icon icon-low"></i><span>0-5000人</span></li>
+                        <li><i class="icon icon-normal"></i><span>5000-50000人</span></li>
+                        <li><i class="icon icon-high"></i><span>>50000人</span></li>
+                    </ul>
+                </div>
+                <div id="cc">
+                    <!-- <iframe src="map.html" id="chart21" width="100%" height="100%" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+                    <iframe class="hidden" id="chart22" width="100%" height="100%" frameborder="0" scrolling="no" allowtransparency="true"></iframe> -->
+                </div>
+            </div>
+            <div class="bd-chart bd-chart2 chart-top bd-chart-line">
+                <div class="chart-title">地区活跃TOP10</div>
+                <div id="tc">
+                    <ul>
+                        <li>
+                            <div class="top-title">
+                                <span>苏州</span>
+                            </div>
+                            <div class="progress">
+                                <div class="bar"></div>
+                            </div>
+                            <div class="pnum"></div>
+                            <div class="percent"></div>
+                        </li>
+                        <li>
+                            <div class="top-title">
+                                <span>苏州</span>
+                            </div>
+                            <div class="progress">
+                                <div class="bar"></div>
+                            </div>
+                            <div class="pnum"></div>
+                            <div class="percent"></div>
+                        </li>
+                        <li>
+                            <div class="top-title">
+                                <span>苏州</span>
+                            </div>
+                            <div class="progress">
+                                <div class="bar"></div>
+                            </div>
+                            <div class="pnum"></div>
+                            <div class="percent"></div>
+                        </li>
+                        <li>
+                            <div class="top-title">
+                                <span>苏州</span>
+                            </div>
+                            <div class="progress">
+                                <div class="bar"></div>
+                            </div>
+                            <div class="pnum"></div>
+                            <div class="percent"></div>
+                        </li>
+                        <li>
+                            <div class="top-title">
+                                <span>苏州</span>
+                            </div>
+                            <div class="progress">
+                                <div class="bar"></div>
+                            </div>
+                            <div class="pnum"></div>
+                            <div class="percent"></div>
+                        </li>
+                        <li>
+                            <div class="top-title">
+                                <span>苏州</span>
+                            </div>
+                            <div class="progress">
+                                <div class="bar"></div>
+                            </div>
+                            <div class="pnum"></div>
+                            <div class="percent"></div>
+                        </li>
+                        <li>
+                            <div class="top-title">
+                                <span>苏州</span>
+                            </div>
+                            <div class="progress">
+                                <div class="bar"></div>
+                            </div>
+                            <div class="pnum"></div>
+                            <div class="percent"></div>
+                        </li>
+                        <li>
+                            <div class="top-title">
+                                <span>苏州</span>
+                            </div>
+                            <div class="progress">
+                                <div class="bar"></div>
+                            </div>
+                            <div class="pnum"></div>
+                            <div class="percent"></div>
+                        </li>
+                        <li>
+                            <div class="top-title">
+                                <span>苏州</span>
+                            </div>
+                            <div class="progress">
+                                <div class="bar"></div>
+                            </div>
+                            <div class="pnum"></div>
+                            <div class="percent"></div>
+                        </li>
+                        <li>
+                            <div class="top-title">
+                                <span>苏州</span>
+                            </div>
+                            <div class="progress">
+                                <div class="bar"></div>
+                            </div>
+                            <div class="pnum"></div>
+                            <div class="percent"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bd-chart bd-chart2 chart-top bd-chart-line">
+                <div class="chart-title">区域注册TOP10</div>
+                <div id="qytc">
+                    <ul>
+                        <li>
+                            <div class="top-title">
+                                <span>苏州</span>
+                            </div>
+                            <div class="progress">
+                                <div class="bar"></div>
+                            </div>
+                            <div class="pnum"></div>
+                            <div class="percent"></div>
+                        </li>
+                        <li>
+                            <div class="top-title">
+                                <span>苏州</span>
+                            </div>
+                            <div class="progress">
+                                <div class="bar"></div>
+                            </div>
+                            <div class="pnum"></div>
+                            <div class="percent"></div>
+                        </li>
+                        <li>
+                            <div class="top-title">
+                                <span>苏州</span>
+                            </div>
+                            <div class="progress">
+                                <div class="bar"></div>
+                            </div>
+                            <div class="pnum"></div>
+                            <div class="percent"></div>
+                        </li>
+                        <li>
+                            <div class="top-title">
+                                <span>苏州</span>
+                            </div>
+                            <div class="progress">
+                                <div class="bar"></div>
+                            </div>
+                            <div class="pnum"></div>
+                            <div class="percent"></div>
+                        </li>
+                        <li>
+                            <div class="top-title">
+                                <span>苏州</span>
+                            </div>
+                            <div class="progress">
+                                <div class="bar"></div>
+                            </div>
+                            <div class="pnum"></div>
+                            <div class="percent"></div>
+                        </li>
+                        <li>
+                            <div class="top-title">
+                                <span>苏州</span>
+                            </div>
+                            <div class="progress">
+                                <div class="bar"></div>
+                            </div>
+                            <div class="pnum"></div>
+                            <div class="percent"></div>
+                        </li>
+                        <li>
+                            <div class="top-title">
+                                <span>苏州</span>
+                            </div>
+                            <div class="progress">
+                                <div class="bar"></div>
+                            </div>
+                            <div class="pnum"></div>
+                            <div class="percent"></div>
+                        </li>
+                        <li>
+                            <div class="top-title">
+                                <span>苏州</span>
+                            </div>
+                            <div class="progress">
+                                <div class="bar"></div>
+                            </div>
+                            <div class="pnum"></div>
+                            <div class="percent"></div>
+                        </li>
+                        <li>
+                            <div class="top-title">
+                                <span>苏州</span>
+                            </div>
+                            <div class="progress">
+                                <div class="bar"></div>
+                            </div>
+                            <div class="pnum"></div>
+                            <div class="percent"></div>
+                        </li>
+                        <li>
+                            <div class="top-title">
+                                <span>苏州</span>
+                            </div>
+                            <div class="progress">
+                                <div class="bar"></div>
+                            </div>
+                            <div class="pnum"></div>
+                            <div class="percent"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bd-chart bd-chart2 chart-top5 bd-chart-line">
+                <div class="chart-title">
+                    模块活跃TOP5
+                    <div class="legend">
+                        <i class="icon icon-pv"></i>
+                        <i class="icon icon-uv"></i>
+                    </div>
+                </div>
+                <div id="t5c">
+                    <ul>
+                        <li>
+                            <div class="top-title">
+                                <span>积分</span>
+                            </div>
+                            <div class="progress-group">
+                                <div class="progress">
+                                    <div class="bar"></div>
+                                </div>
+                                <div class="progress">
+                                    <div class="bar"></div>
+                                </div>
+                            </div>
+                            <div class="percent">
+                                <div class="pecent-pv"></div>
+                                <div class="percent-uv"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="top-title">
+                                <span>话题</span>
+                            </div>
+                            <div class="progress-group">
+                                <div class="progress">
+                                    <div class="bar"></div>
+                                </div>
+                                <div class="progress">
+                                    <div class="bar"></div>
+                                </div>
+                            </div>
+                            <div class="percent">
+                                <div class="pecent-pv"></div>
+                                <div class="percent-uv"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="top-title">
+                                <span>问答</span>
+                            </div>
+                            <div class="progress-group">
+                                <div class="progress">
+                                    <div class="bar"></div>
+                                </div>
+                                <div class="progress">
+                                    <div class="bar"></div>
+                                </div>
+                            </div>
+                            <div class="percent">
+                                <div class="pecent-pv"></div>
+                                <div class="percent-uv"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="top-title">
+                                <span>资讯</span>
+                            </div>
+                            <div class="progress-group">
+                                <div class="progress">
+                                    <div class="bar"></div>
+                                </div>
+                                <div class="progress">
+                                    <div class="bar"></div>
+                                </div>
+                            </div>
+                            <div class="percent">
+                                <div class="pecent-pv"></div>
+                                <div class="percent-uv"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="top-title">
+                                <span>作业</span>
+                            </div>
+                            <div class="progress-group">
+                                <div class="progress">
+                                    <div class="bar"></div>
+                                </div>
+                                <div class="progress">
+                                    <div class="bar"></div>
+                                </div>
+                            </div>
+                            <div class="percent">
+                                <div class="pecent-pv"></div>
+                                <div class="percent-uv"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bd-chart chart-new hidden">
+                <i class="icon icon-new"></i>
+                <div class="chart-title">
+                    <p>今日新增用户数</p>
+                    <span>New Subscribers Today</span>
+                </div>
+                <div id="nc">
+                    <div class="mark">
+                        <div class="middle">0</div>
+                        <div class="bottom">0</div>
+                    </div>
+                    <div class="progress-vertial">
+                        <div class="vertial-bar"></div>
+                    </div>
+                    <div class="tip-area">
+                        <div class="tip">0</div>
+                    </div>
+                </div>
+            </div>
+            <div class="bd-chart chart-user">
+                <i class="icon icon-user"></i>
+                <div class="chart-title">
+                    <p>分时活跃走势<span> (5分钟)</span></p>
+                    <!-- <p>分时活跃用户数</p> -->
+                    <!-- <span>Time-sharing Active Users</span> -->
+                </div>
+                <div class="chart-user-right">
+                        <i class="icon icon_shic"></i>
+                        <div class="chart-title-right">
+                            <div class="chart-title-avg">平均停留时长：
+                                <p>家长 <span></span>分钟</p> /
+                                <p>老师 <span></span>分钟</p>
+                            </div>
+    
+                        </div>
+                    </div>
+                <div id="uc"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
